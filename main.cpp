@@ -40,70 +40,72 @@ void Analyse(std::istream& input, std::ostream& output){
 }
 
 int main(int argc, char** argv) {
-	argparse::ArgumentParser program("miniplc0");
-	program.add_argument("input")
-		.help("speicify the file to be compiled.");
-	program.add_argument("-t")
-		.default_value(false)
-		.implicit_value(true)
-		.help("perform tokenization for the input file.");
-	program.add_argument("-l")
-		.default_value(false)
-		.implicit_value(true)
-		.help("perform syntactic analysis for the input file.");
-	program.add_argument("-o", "--output")
-		.required()
-		.default_value(std::string("-"))
-		.help("specify the output file.");
-
-	try {
-		program.parse_args(argc, argv);
-	}
-	catch (const std::runtime_error& err) {
-		fmt::print(stderr, "{}\n\n", err.what());
-		program.print_help();
-		exit(2);
-	}
-
-	auto input_file = program.get<std::string>("input");
-	auto output_file = program.get<std::string>("--output");
-	std::istream* input;
-	std::ostream* output;
-	std::ifstream inf;
-	std::ofstream outf;
-	if (input_file != "-") {
-		inf.open(input_file, std::ios::in);
-		if (!inf) {
-			fmt::print(stderr, "Fail to open {} for reading.\n", input_file);
-			exit(2);
-		}
-		input = &inf;
-	}
-	else
-		input = &std::cin;
-	if (output_file != "-") {
-		outf.open(output_file, std::ios::out | std::ios::trunc);
-		if (!outf) {
-			fmt::print(stderr, "Fail to open {} for writing.\n", output_file);
-			exit(2);
-		}
-		output = &outf;
-	}
-	else
-		output = &std::cout;
-	if (program["-t"] == true && program["-l"] == true) {
-		fmt::print(stderr, "You can only perform tokenization or syntactic analysis at one time.");
-		exit(2);
-	}
-	if (program["-t"] == true) {
-		Tokenize(*input, *output);
-	}
-	else if (program["-l"] == true) {
-		Analyse(*input, *output);
-	}
-	else {
-		fmt::print(stderr, "You must choose tokenization or syntactic analysis.");
-		exit(2);
-	}
+//	argparse::ArgumentParser program("miniplc0");
+//	program.add_argument("input")
+//		.help("speicify the file to be compiled.");
+//	program.add_argument("-t")
+//		.default_value(false)
+//		.implicit_value(true)
+//		.help("perform tokenization for the input file.");
+//	program.add_argument("-l")
+//		.default_value(false)
+//		.implicit_value(true)
+//		.help("perform syntactic analysis for the input file.");
+//	program.add_argument("-o", "--output")
+//		.required()
+//		.default_value(std::string("-"))
+//		.help("specify the output file.");
+//
+//	try {
+//		program.parse_args(argc, argv);
+//	}
+//	catch (const std::runtime_error& err) {
+//		fmt::print(stderr, "{}\n\n", err.what());
+//		program.print_help();
+//		exit(2);
+//	}
+//
+//	auto input_file = program.get<std::string>("input");
+//	auto output_file = program.get<std::string>("--output");
+//	std::istream* input;
+//	std::ostream* output;
+//	std::ifstream inf;
+//	std::ofstream outf;
+//	if (input_file != "-") {
+//		inf.open(input_file, std::ios::in);
+//		if (!inf) {
+//			fmt::print(stderr, "Fail to open {} for reading.\n", input_file);
+//			exit(2);
+//		}
+//		input = &inf;
+//	}
+//	else
+//		input = &std::cin;
+//	if (output_file != "-") {
+//		outf.open(output_file, std::ios::out | std::ios::trunc);
+//		if (!outf) {
+//			fmt::print(stderr, "Fail to open {} for writing.\n", output_file);
+//			exit(2);
+//		}
+//		output = &outf;
+//	}
+//	else
+//		output = &std::cout;
+//	if (program["-t"] == true && program["-l"] == true) {
+//		fmt::print(stderr, "You can only perform tokenization or syntactic analysis at one time.");
+//		exit(2);
+//	}
+//	if (program["-t"] == true) {
+//		Tokenize(*input, *output);
+//	}
+//	else if (program["-l"] == true) {
+//		Analyse(*input, *output);
+//	}
+//	else {
+//		fmt::print(stderr, "You must choose tokenization or syntactic analysis.");
+//		exit(2);
+//	}
+    std::cout<<"rty is testing\n";
+    std::cout<<"too vegitabel\n";
 	return 0;
 }
